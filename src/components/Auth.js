@@ -1,14 +1,28 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { authLogIn } from "../redux/reducers/authReducer";
 
 import "./Auth.css";
 
 const Auth = () => {
+
+  const dispatch = useDispatch();
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault()
+
+
+    // TODO, sigin in user
+    dispatch(authLogIn())
+  }
+
+  
   return (
     <div className="container">
       <h1>Login</h1>{" "}
-      <form>
-        <label htmlFor="id">Id</label>
-        <input type="text" name="id" id="id" />
+      <form onSubmit={handleOnSubmit}>
+        <label htmlFor="email">Email</label>
+        <input type="text" name="email" id="id" />
         <label htmlFor="password">Password</label>
         <input type="password" name="password" id="password" />
         <button className="login-btn" type="submit">
